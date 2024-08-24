@@ -3,6 +3,8 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
+const port = process.env.PORT || 9000;
+
 function getRoomId() {
     let roomId = '';
 
@@ -39,7 +41,7 @@ io.on('connection', (socket) => {
     ackCallback([true, roomId]);
   });
 
-    server.listen(3000, () => {
-    console.log('listening on *:3000');
+    server.listen(port, () => {
+    console.log(`listening on port ${port}`);
     });
 });
