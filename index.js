@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const dotenv = require('dotenv');
+dotenv.config()
 
 const port = process.env.PORT || 9000;
 
@@ -40,8 +42,8 @@ io.on('connection', (socket) => {
 
     ackCallback([true, roomId]);
   });
+});
 
-    server.listen(port, () => {
+server.listen(port, () => {
     console.log(`listening on port ${port}`);
-    });
 });
